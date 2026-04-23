@@ -31,16 +31,16 @@ function TripsPage() {
     <SiteLayout>
       <section className="bg-muted/40">
         <div className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8 lg:py-20">
-          <span className="text-sm font-semibold uppercase tracking-wider text-primary">Trajets</span>
-          <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight sm:text-5xl">Trajets populaires</h1>
-          <p className="mt-5 text-lg text-muted-foreground">Découvrez les principales liaisons disponibles. Prix indicatifs, susceptibles de varier selon la compagnie.</p>
+          <span className="reveal-up text-sm font-semibold uppercase tracking-wider text-primary">Trajets</span>
+          <h1 className="reveal-up mt-3 font-display text-4xl font-extrabold tracking-tight sm:text-5xl" style={{ animationDelay: "120ms" }}>Trajets populaires</h1>
+          <p className="reveal-up mt-5 text-lg text-muted-foreground" style={{ animationDelay: "220ms" }}>Découvrez les principales liaisons disponibles. Prix indicatifs, susceptibles de varier selon la compagnie.</p>
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {TRIPS.map((t) => (
-            <article key={`${t.from}-${t.to}`} className="group rounded-2xl bg-card p-6 shadow-[var(--shadow-card)] ring-1 ring-border/60 transition hover:-translate-y-1 hover:shadow-[var(--shadow-elevated)]">
+          {TRIPS.map((t, i) => (
+            <article key={`${t.from}-${t.to}`} className="reveal-up hover-lift group rounded-2xl bg-card p-6 shadow-[var(--shadow-card)] ring-1 ring-border/60" style={{ animationDelay: `${80 + (i % 3) * 80}ms` }}>
               <div className="flex items-center gap-2 text-xs font-semibold uppercase text-muted-foreground">
                 <Bus className="h-4 w-4 text-primary" /> {t.freq}
               </div>
@@ -53,7 +53,7 @@ function TripsPage() {
                 <div className="flex items-center gap-1 text-sm text-muted-foreground"><Clock className="h-4 w-4" />{t.dur}</div>
                 <div className="font-display text-2xl font-extrabold text-secondary">{t.price.toLocaleString("fr-FR")} <span className="text-xs font-medium text-muted-foreground">FCFA</span></div>
               </div>
-              <Button className="mt-5 h-11 w-full rounded-xl">Réserver sur l'app</Button>
+              <Button className="hover-lift hover-spark mt-5 h-11 w-full rounded-xl">Réserver sur l'app</Button>
             </article>
           ))}
         </div>

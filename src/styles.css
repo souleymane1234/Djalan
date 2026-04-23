@@ -144,3 +144,154 @@
     color: var(--color-foreground);
   }
 }
+
+@keyframes floatY {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 8px 30px -16px oklch(0.69 0.17 50 / 0.18);
+  }
+  50% {
+    box-shadow: 0 18px 40px -12px oklch(0.69 0.17 50 / 0.36);
+  }
+}
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmerSweep {
+  from {
+    transform: translateX(-130%);
+  }
+  to {
+    transform: translateX(130%);
+  }
+}
+
+@keyframes marqueeX {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes nudgeRight {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+}
+
+@layer utilities {
+  .reveal-up {
+    opacity: 0;
+    animation: revealUp 700ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  }
+
+  .float-soft {
+    animation: floatY 5.2s ease-in-out infinite;
+  }
+
+  .float-soft-delay {
+    animation: floatY 6.2s ease-in-out infinite;
+    animation-delay: 500ms;
+  }
+
+  .pulse-glow {
+    animation: pulseGlow 2.8s ease-in-out infinite;
+  }
+
+  .hover-lift {
+    transition: transform 280ms ease, box-shadow 280ms ease, filter 280ms ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-6px) scale(1.015);
+    filter: saturate(1.08);
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .hover-spark {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hover-spark::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, oklch(1 0 0 / 0.35) 50%, transparent 70%);
+    transform: translateX(-130%);
+    transition: transform 450ms ease;
+    pointer-events: none;
+  }
+
+  .hover-spark:hover::before {
+    transform: translateX(130%);
+  }
+
+  .hover-slide-x {
+    transition: transform 220ms ease, color 220ms ease;
+  }
+
+  .hover-slide-x:hover {
+    transform: translateX(4px);
+  }
+
+  .hover-icon-nudge:hover svg {
+    animation: nudgeRight 500ms ease;
+  }
+
+  .shimmer-shell {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer-shell::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 35%, oklch(1 0 0 / 0.3) 50%, transparent 65%);
+    transform: translateX(-130%);
+    animation: shimmerSweep 2.2s linear infinite;
+    pointer-events: none;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marqueeX 24s linear infinite;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}

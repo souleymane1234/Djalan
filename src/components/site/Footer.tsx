@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logoRemovebgPreview from "@/assets/logo-removebg-preview.png";
 
 export function Footer() {
   return (
@@ -8,13 +8,13 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <img src={logo} alt="DJALAN" width={160} height={40} className="h-10 w-auto brightness-0 invert" />
+            <img src={logoRemovebgPreview} alt="DJALAN" width={160} height={40} className="float-soft h-10 w-auto brightness-0 invert" />
             <p className="mt-4 text-sm leading-relaxed text-background/70">
               La super-app de mobilité en Afrique. Réservez vos trajets interurbains en quelques secondes.
             </p>
             <div className="mt-6 flex gap-3">
               {[Facebook, Instagram, Linkedin].map((Icon, i) => (
-                <a key={i} href="#" className="flex h-9 w-9 items-center justify-center rounded-full bg-background/10 transition hover:bg-primary">
+                <a key={i} href="#" className="hover-lift flex h-9 w-9 items-center justify-center rounded-full bg-background/10 transition hover:bg-primary">
                   <Icon className="h-4 w-4" />
                 </a>
               ))}
@@ -23,19 +23,19 @@ export function Footer() {
           <div>
             <h4 className="text-sm font-semibold uppercase tracking-wide">Navigation</h4>
             <ul className="mt-4 space-y-3 text-sm text-background/70">
-              <li><Link to="/a-propos" className="hover:text-primary">À propos</Link></li>
-              <li><Link to="/comment-ca-marche" className="hover:text-primary">Comment ça marche</Link></li>
-              <li><Link to="/trajets" className="hover:text-primary">Trajets</Link></li>
-              <li><Link to="/partenaire" className="hover:text-primary">Devenir partenaire</Link></li>
+              <li><Link to="/a-propos" className="hover-slide-x inline-block hover:text-primary">À propos</Link></li>
+              <li><Link to="/comment-ca-marche" className="hover-slide-x inline-block hover:text-primary">Comment ça marche</Link></li>
+              <li><Link to="/trajets" className="hover-slide-x inline-block hover:text-primary">Trajets</Link></li>
+              <li><Link to="/partenaire" className="hover-slide-x inline-block hover:text-primary">Devenir partenaire</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="text-sm font-semibold uppercase tracking-wide">Entreprise</h4>
             <ul className="mt-4 space-y-3 text-sm text-background/70">
-              <li><a href="#" className="hover:text-primary">Mentions légales</a></li>
-              <li><a href="#" className="hover:text-primary">Politique de confidentialité</a></li>
-              <li><a href="#" className="hover:text-primary">CGU</a></li>
-              <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
+              <li><a href="#" className="hover-slide-x inline-block hover:text-primary">Mentions légales</a></li>
+              <li><a href="#" className="hover-slide-x inline-block hover:text-primary">Politique de confidentialité</a></li>
+              <li><a href="#" className="hover-slide-x inline-block hover:text-primary">CGU</a></li>
+              <li><Link to="/contact" className="hover-slide-x inline-block hover:text-primary">Contact</Link></li>
             </ul>
           </div>
           <div>
